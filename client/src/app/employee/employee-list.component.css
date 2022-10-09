@@ -1,0 +1,17 @@
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 70%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
+
+  .mat-column-empCode{
+    width: 10%;
+    max-width: 10%;
+  }

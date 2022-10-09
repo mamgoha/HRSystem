@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-secondary">
+    <a class="navbar-brand" [routerLink]="['/home']">HR System</a>
+  
+    <ul class="navbar-nav mr-auto">
+      <a class="nav-link" [routerLink]="['/departments']">Departments</a>
+      <a class="nav-link" [routerLink]="['/employees']">Employees</a>
+    </ul>
+
+    <ng-container *ngIf="(currentUser$ | async) === null">
+      <a routerLink="/account/login" class="btn btn-primary mr-2">Login</a>
+      <a routerLink="/account/register" class="btn btn-primary mr-3">Sign up</a>
+    </ng-container>
+
+    <ng-container *ngIf="currentUser$ | async">
+      <a (click)="logout()" class="btn btn-danger mr-2">
+        Logout
+      </a>
+    </ng-container>
+  </nav>

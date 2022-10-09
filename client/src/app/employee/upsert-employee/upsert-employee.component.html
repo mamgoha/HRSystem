@@ -1,0 +1,41 @@
+<h1 mat-dialog-title>{{data.btnAction === 'Update'? 'Edit' : 'New'}} Employee</h1>
+<div mat-dialog-content>
+    <form [formGroup]="employeeForm">
+        <mat-form-field appearance="outline">
+            <mat-label>Employee Code</mat-label>
+            <input formControlName="empCode" matInput placeholder="Employee Code" autocomplete="off"/>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Employee Name</mat-label>
+            <input formControlName="empName" matInput placeholder="Employee Name" autocomplete="off"/>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Date Of Birth</mat-label>
+            <input formControlName="dateOfBirth" matInput [matDatepicker]="picker" />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Mobile</mat-label>
+            <input formControlName="mobile" type="tel" matInput placeholder="Mobile" autocomplete="off" (keypress)="keyPressNumbers($event)"/>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Address</mat-label>
+            <textarea formControlName="address" matInput placeholder="Address" autocomplete="off"></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Department</mat-label>
+            <mat-select formControlName="departmentId" placeholder="Department">
+                <mat-option *ngFor="let department of departments" [value]="department.id">{{department.departmentName}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Salary</mat-label>
+            <input formControlName="salary" type="number" matInput placeholder="Salary" autocomplete="off" (keypress)="keyPressNumbers($event)"/>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="primary" style="margin-left: 8px;" (click)="addEmployee()">{{data.btnAction}}</button>
+</div>

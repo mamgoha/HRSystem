@@ -1,0 +1,25 @@
+<div class="d-flex justify-content-center mt-5">
+    <div class="col-3 mt-3">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="text-center mb-4">
+          <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+        </div>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Email Address</mat-label>
+            <input type="email" matInput placeholder="Password" formControlName="email">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput placeholder="Password" formControlName="password">
+          </mat-form-field>
+        <ul class="text-danger list-unstyled" *ngIf="errors">
+            <li *ngFor="let error of errors">
+                {{error}}
+            </li>
+        </ul>
+       
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+      </form>
+    </div>
+  </div>
